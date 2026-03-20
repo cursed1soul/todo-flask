@@ -1,13 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+    <meta charset="UTF-8">
     <title>Todo List</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 80px auto;
+            background: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5a67d8;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: red;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: darkred;
+        }
+    </style>
 </head>
 <body>
-    <h1>Todo List</h1>
+
+<div class="container">
+    <h1>📋 Мой список задач</h1>
 
     <form action="/add" method="post">
-        <input type="text" name="task" placeholder="Новая задача" required>
+        <input type="text" name="task" placeholder="Введите задачу..." required>
         <button type="submit">Добавить</button>
     </form>
 
@@ -15,9 +93,11 @@
         {% for task in tasks %}
             <li>
                 {{ task }}
-                <a href="/delete/{{ loop.index0 }}">❌</a>
+                <a href="/delete/{{ loop.index0 }}">✖</a>
             </li>
         {% endfor %}
     </ul>
+</div>
+
 </body>
 </html>
